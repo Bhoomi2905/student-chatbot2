@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Assistant 🤖</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="chat-container">
+    <div class="chat-header">Student Assistant 🤖</div>
+
+    <div class="chat-messages">
+        {% for sender, msg, time in chat_history %}
+        <div class="message {{ 'user' if sender=='You' else 'bot' }}">
+            
+            {% if sender != 'You' %}
+            <img src="{{ url_for('static', filename='avatar.jpg') }}" class="avatar">
+            {% endif %}
+
+            <span class="text">{{ msg|safe }}</span>
+            <span class="time">{{ time }}</span>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="suggestions">
+        {% for s in suggestions %}
+        <form method="POST">
+            <input type="hidden" name="question" value="{{ s }}">
+            <button type="submit">{{ s }}</button>
+        </form>
+        {% endfor %}
+    </div>
+
+    <div class="chat-input">
+        <form method="POST">
+            <input type="text" name="question" placeholder="Type your question..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
