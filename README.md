@@ -18,7 +18,7 @@ HTML, CSS
 OpenAI API
 
 
-student-chatbot │ ├── main.py ├── requirements.txt ├── templates/ │ └── index.html ├── static/ │ ├── style.css │ └── bot.jpg
+student-chatbot │ ├── main.py ├── requirements.txt ├── templates/ │ └── index.html ├── static/ │ ├── style.css │ └── avatar.jpg
 
 How to 
 
